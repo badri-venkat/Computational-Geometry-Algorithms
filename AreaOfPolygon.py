@@ -1,12 +1,9 @@
-from PolygonHelper import inputPolygon
+def getArea(polygonArray):
+    numberOfPoints = len(polygonArray)
+    areaOfPolygon = 0
 
-numberOfPoints = int(input("Number of Points? : "))
-polygonArray = inputPolygon(numberOfPoints)
+    for i in range(numberOfPoints):
+        areaOfPolygon += polygonArray[i][0] * polygonArray[(i + 1)%numberOfPoints][1]
+        areaOfPolygon -= polygonArray[i][1] * polygonArray[(i + 1)%numberOfPoints][0]
 
-areaOfPolygon=0
-
-for i in range(numberOfPoints):
-    areaOfPolygon+=polygonArray[i][0] * polygonArray[i+1][1]
-    areaOfPolygon-=polygonArray[i][1] * polygonArray[i+1][0]
-
-print(areaOfPolygon)
+    return areaOfPolygon/2.0
